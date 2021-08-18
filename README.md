@@ -44,3 +44,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+axios和fetch的表现不一样，axios会在返回状态不是2xx的时候抛出异常，而fetch只有在断网时或者连接网络失败时抛出异常
