@@ -46,3 +46,26 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 axios和fetch的表现不一样，axios会在返回状态不是2xx的时候抛出异常，而fetch只有在断网时或者连接网络失败时抛出异常
+
+
+JS中的typeof，是在runtime时运行的
+return typeof 1==='number'
+TS中的typeof 是在静态环境运行的
+<typeof http>
+utility type的用法：用泛型给它传入一个其它类型，然后utility type对这个类型进行某种操作
+Parameters<typeof http>
+Partial<Person> //Person接口里面的类型可选
+Omit<Person,'name'|'age'>//删除Person接口里面的name和age变量类型
+
+
+### interface 与 type 的区别
+
+**interface**
+
+- 只能描述 `object`/`class`/`function` 的类型
+- 同名 `interface` 自动合并，利于扩展
+
+**type**
+
+- 不能重名
+- 能描述所有数据

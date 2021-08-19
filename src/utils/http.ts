@@ -11,7 +11,7 @@ export const http=async (endpoint:string,{data,token,headers,...customConfig}:Co
     const config={
         method:'GET',
         headers:{
-            Authorization:token?`Bearer${token}`:``,
+            Authorization:token?`Bearer ${token}`:``,
             'Content-Type':data?'application/json':''
         },
             ...customConfig
