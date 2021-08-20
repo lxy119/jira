@@ -5,7 +5,7 @@ import {ProjectListScreen} from "screens/project-list";
 import {useAuth} from "context/auth-context";
 import {ReactComponent as Softwarelogo} from 'assets/software-logo.svg'
 import {Row} from "./components/lib";
-import {Dropdown, Menu} from "antd";
+import {Button, Dropdown, Menu} from "antd";
 
 export const AuthenticatedApp=()=>{
     const {logout,user}=useAuth()
@@ -18,9 +18,9 @@ export const AuthenticatedApp=()=>{
             </LeftHeader>
             <RightHeader>
                 <Dropdown overlay={<Menu><Menu.Item key={'logout'}>
-                    <a onClick={logout}>退出</a>
+                    <Button onClick={logout}>退出</Button>
                 </Menu.Item></Menu>}>
-                    <a onClick={e => e.preventDefault()}>Hi,{user?.name}</a>
+                    <Button type={"link"} onClick={e => e.preventDefault()}>Hi,{user?.name}</Button>
                 </Dropdown>
             </RightHeader>
         </Header>
