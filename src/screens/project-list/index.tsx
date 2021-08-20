@@ -6,6 +6,7 @@ import { List } from "./list"
 import { cleanObject,useMount,useDebounce } from '../../utils'
 import * as qs from 'qs'
 import {useHttp} from "../../utils/http";
+import styled from "@emotion/styled";
 
 const baseUrl=process.env.REACT_APP_API_URL
 
@@ -27,8 +28,12 @@ export const ProjectListScreen=()=>{
         client('users').then(setUsers)
 
     })
-    return <>
+    return <Container>
+        <h1>项目列表</h1>
     <SearchPanel param={param} users={users} setParam={setParam}/>
     <List list={list} users={users}/>
-    </>
+    </Container>
 }
+const Container=styled.div`
+padding: 3.2rem;
+`
