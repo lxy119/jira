@@ -1,14 +1,19 @@
 import React from "react";
 import {Form, Input} from "antd";
-import {useAuth} from ".././context/auth-context";
+import {useAuth} from "context/auth-context";
 import {LongButton} from "./index";
+import {useAsync} from "../utils/use-async";
 
-export const Login=()=>{
+export const Login=({onError}:{onError:(error:Error)=>void})=>{
 
     const {login}=useAuth()
-
-    const handleSubmit=(values:{username:string,password:string})=>{
-        login(values)
+    const {run,isLoading}=useAsync(undefined,{throwOnError: true})
+    const handleSubmit=async (values:{username:string,password:string})=>{
+        try {
+         await run(login(values))
+        }catch (e) {
+          onError(e)
+        }
     }
 
     return (<Form onFinish={handleSubmit}>
@@ -16,10 +21,10 @@ export const Login=()=>{
             <Input type="text" id={'username'} placeholder={'账号'}/>
         </Form.Item>
         <Form.Item label={'密码:'} name={'password'} rules={[{required:true,message: 'Please input your password!' }]}>
-            <Input type="text" id={'password'} placeholder={'密码'}/>
+            <Input type="password" id={'password'} placeholder={'密码'}/>
         </Form.Item>
         <Form.Item>
-            <LongButton type={'primary'} htmlType={'submit'}>登录</LongButton>
+            <LongButton type={'primary'} htmlType={'submit'} loading={isLoading}>登录</LongButton>
         </Form.Item>
     </Form>)
 }
