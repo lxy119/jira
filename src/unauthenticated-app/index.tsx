@@ -9,12 +9,12 @@ import {Login} from "./login";
 import left from 'assets/left.svg'
 import right from 'assets/right.svg'
 import logo from 'assets/logo.svg'
-// import {useDocumentTitle} from "../utils";
+import {useDocumentTitle} from "../utils";
 
 export const  UnauthenticatedApp=()=>{
     const [isRegister,setIsRegister]=useState(false)
     const [error,setError]=useState<null|Error>(null)
-    // useDocumentTitle('登录或注册界面')
+    useDocumentTitle('登录或注册界面')
 
     return <Container>
 
