@@ -33,3 +33,18 @@ export const useDebounce=<V>(value:V,delay?:number)=>{
     },[value,delay])
     return debounceValue
 }
+
+export const  useDocumentTitle=(title:string,keepUnmount:boolean=true)=>{
+    const preTitle=document.title
+    useEffect(()=>{
+        document.title=title
+    },[title])
+
+    useEffect(()=>{
+        return ()=>{
+            if (!keepUnmount){
+                document.title=preTitle
+            }
+        }
+    },[])
+}
