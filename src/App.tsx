@@ -5,6 +5,8 @@ import React from 'react';
 import {useAuth} from "./context/auth-context";
 import {AuthenticatedApp} from "./authenticated-app";
 import {UnauthenticatedApp} from "./unauthenticated-app";
+import {ErrorBundary} from "./components/error-bundary";
+import {FullPageErrorFallback} from "./components/lib";
 
 function App() {
   const {user}=useAuth()
@@ -12,9 +14,9 @@ function App() {
     <div className="App">
      {/* <ProjectListScreen/> */}
      {/*<Login/>*/}
-      {
-        user?<AuthenticatedApp/>:<UnauthenticatedApp/>
-      }
+     <ErrorBundary fallbackRender={FullPageErrorFallback}>
+       {user?<AuthenticatedApp/>:<UnauthenticatedApp/>}
+     </ErrorBundary>
     </div>
   );
 }
