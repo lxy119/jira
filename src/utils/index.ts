@@ -50,3 +50,5 @@ export const  useDocumentTitle=(title:string,keepUnmount:boolean=true)=>{
         }
     },[keepUnmount,preTitle])
 }
+
+export const restRoute=()=>window.location.href=window.location.origin

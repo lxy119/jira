@@ -8,7 +8,7 @@ export  const useUsers=(param?:Partial<User>)=>{
     const client=useHttp()
     const {run,...result}=useAsync<User[]>()
     useMount(()=>{
-        run(client("users",{data:cleanObject(param||{})}))
+         run(client("users",{data:cleanObject(param||{})}))
         //    eslint-disable-next-line react-hooks/exhaustive-deps
     })
     return result
