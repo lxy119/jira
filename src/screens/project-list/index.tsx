@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Typography} from "antd";
+import {Typography} from "antd";
 
 import { SearchPanel } from "./search-panel"
 import {List} from "./list"
@@ -14,7 +14,7 @@ import {Row} from "../../components/lib";
 
 // const baseUrl=process.env.REACT_APP_API_URL
 
-export const ProjectListScreen=(props:{setProjectModalOpen:(isOpen:boolean)=>void})=>{
+export const ProjectListScreen=(props:{projectButton:JSX.Element})=>{
 
     //基本类型可以放到依赖里；组件状态，可以放到依赖里；非组件状态的对象，绝不可以放到依赖里
     // const [keys]=useState<('name'|'personId')[]>(['name','personId'])
@@ -29,11 +29,11 @@ export const ProjectListScreen=(props:{setProjectModalOpen:(isOpen:boolean)=>voi
         {/*</Helmet>*/}
         <Row between={true}>
             <h1>项目列表</h1>
-            <Button onClick={()=>props.setProjectModalOpen(true)}>創建項目</Button>
+            {props.projectButton}
         </Row>
     <SearchPanel param={param} users={users||[]} setParam={setParam}/>
         { error?<Typography.Text type={'danger'}>{error.message}</Typography.Text>:null}
-    <List refresh={retry} dataSource={list||[]} users={users||[]} loading={isLoading} setProjectModalOpen={props.setProjectModalOpen}/>
+    <List refresh={retry} dataSource={list||[]} users={users||[]} loading={isLoading} projectButton={props.projectButton}/>
     </Container>
 }
 

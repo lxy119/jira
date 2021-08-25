@@ -22,7 +22,7 @@ export interface Project{
 interface ListProps extends TableProps<Project>{
     users:User[]
     refresh?:()=>void
-    setProjectModalOpen:(isOpen:boolean)=>void
+  projectButton:JSX.Element
 }
 
 export const List=({users,...props}:ListProps)=>{
@@ -46,23 +46,23 @@ export const List=({users,...props}:ListProps)=>{
         dataIndex: 'organization',
     },{
         title:'负责人',
-        render(project:any){
+        render(project:Project){
             return <span>
                 {users.find((user:User)=>project.personId===user.id)?.name||'未知'}
             </span>
         }
     },{
         title: '创建时间',
-        render(project:any){
+        render(project:Project){
             return <span>
                 {project.created? dayjs(project.created).format('YYYY-MM-DD'):'无'}
             </span>
         }
     },{
-        render(project: any): any {
+        render() {
             return <Dropdown overlay={<Menu>
                 <Menu.Item key={'edit'}>
-                    <ButtonNoPadding type={"link"} onClick={()=>props.setProjectModalOpen(true)}>編輯</ButtonNoPadding>
+                    {props.projectButton}
                 </Menu.Item>
             </Menu>}>
                 <ButtonNoPadding type={"link"}>...</ButtonNoPadding>
