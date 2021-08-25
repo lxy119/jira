@@ -1,13 +1,14 @@
 import React from 'react'
 //react-router 和react-router-dom的关系，类似于react和react-dom/react-native/react-vr
 import {Link} from "react-router-dom";
-import {Table, TableProps} from "antd";
+import {Dropdown, Menu, Table, TableProps} from "antd";
 import dayjs from "dayjs";
 
 
 import { User } from './search-panel'
 import {Pin} from "../../components/pin";
 import {useEditProject} from "../../utils/project";
+import {ButtonNoPadding} from "../../components/lib";
 
 export interface Project{
     id:string
@@ -21,6 +22,7 @@ export interface Project{
 interface ListProps extends TableProps<Project>{
     users:User[]
     refresh?:()=>void
+    setProjectModalOpen:(isOpen:boolean)=>void
 }
 
 export const List=({users,...props}:ListProps)=>{
@@ -56,7 +58,17 @@ export const List=({users,...props}:ListProps)=>{
                 {project.created? dayjs(project.created).format('YYYY-MM-DD'):'无'}
             </span>
         }
-    }
+    },{
+        render(project: any): any {
+            return <Dropdown overlay={<Menu>
+                <Menu.Item key={'edit'}>
+                    <ButtonNoPadding type={"link"} onClick={()=>props.setProjectModalOpen(true)}>編輯</ButtonNoPadding>
+                </Menu.Item>
+            </Menu>}>
+                <ButtonNoPadding type={"link"}>...</ButtonNoPadding>
+            </Dropdown>
+        }
+        }
     ]
     return  <Table pagination={false} columns={columns}   rowKey={"id"} {...props}/>
 
