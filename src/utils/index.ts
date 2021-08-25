@@ -52,3 +52,16 @@ export const  useDocumentTitle=(title:string,keepUnmount:boolean=true)=>{
 }
 
 export const restRoute=()=>window.location.href=window.location.origin
+
+
+//還沒挂載或者已經卸載返回false；反之，返回true
+export const useMountedRef = ()=>{
+    const mountedRef=useRef(false)
+    useEffect(()=>{
+          mountedRef.current=true
+        return ()=>{
+              mountedRef.current=false
+        }
+})
+    return mountedRef
+}
