@@ -6,11 +6,13 @@ import dayjs from "dayjs";
 
 
 import { User } from './search-panel'
+import {Pin} from "../../components/pin";
+import {useEditProject} from "../../utils/project";
 
 export interface Project{
     id:string
     name:string
-    personId:string
+    personId:number
     pin:boolean
     organization:string
     created:number
@@ -18,11 +20,20 @@ export interface Project{
 
 interface ListProps extends TableProps<Project>{
     users:User[]
+    refresh?:()=>void
 }
 
 export const List=({users,...props}:ListProps)=>{
 
+    const {mutate}=useEditProject()
     const columns=[{
+        title: <Pin checked={true} disabled={true}/>,
+        render(project: any){
+            return <Pin checked={project.pin}
+                        onCheckedChange={(pin) => mutate({id: project.id,pin}).then(props.refresh)}/>
+        }
+    },
+    {
         title:'名称',
         sorter:(a:any,b:any)=>a.name.localeCompare(b.name),
         render(project: any) {
@@ -34,7 +45,7 @@ export const List=({users,...props}:ListProps)=>{
     },{
         title:'负责人',
         render(project:any){
-            return <span >
+            return <span>
                 {users.find((user:User)=>project.personId===user.id)?.name||'未知'}
             </span>
         }

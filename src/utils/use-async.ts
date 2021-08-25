@@ -17,12 +17,18 @@ const defaultConfig={
 export const useAsync=<D>(initialState?:State<D>,initialConfig?:typeof defaultConfig)=>{
     const config={...defaultConfig,...initialConfig}
     const [state,setState]=useState<State<D>>({...defaultInitialState,...initialState})
+    const [retry,setRetry]=useState(()=>()=>{})
     const setData=(data:D)=>setState({data,stat:'success',error:null})
     const setError=(error:Error)=>setState({data:null,stat:"error",error})
-    const run=(promise:Promise<D>)=>{
-        if (!promise){
+    const run=(promise:Promise<D>,runConfig?:{retry:()=>Promise<D>})=>{
+        if (!promise||!promise.then){
             throw new Error("请传入Promise类型的数据")
         }
+        setRetry(()=>()=>{
+            if (runConfig?.retry) {
+                run(runConfig?.retry(), runConfig)
+            }
+        })
         setState({...state,stat: 'loading'})
         return promise.then(data=> {
                 setData(data)
@@ -35,6 +41,7 @@ export const useAsync=<D>(initialState?:State<D>,initialConfig?:typeof defaultCo
 
         })
     }
+
     return {
         isIdle:state.stat==='idle',
         isLoading:state.stat==='loading',
@@ -43,6 +50,7 @@ export const useAsync=<D>(initialState?:State<D>,initialConfig?:typeof defaultCo
         run,
         setError,
         setData,
+        retry,
         ...state
     }
 }
