@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from "react"
+import {useUrlQueryParam} from "./url";
 // export const isFalsy=(value:unknown)=>value===0?false:!value
 
 export const isVoid=(value:unknown)=>value===undefined||value===null||value===''
@@ -64,4 +65,17 @@ export const useMountedRef = ()=>{
         }
 })
     return mountedRef
+}
+
+export  const useProjectModal=()=>{
+    const [{projectCreate},setProjectModalOpen]=useUrlQueryParam(['projectCreate'])
+    const open=()=>setProjectModalOpen({projectCreate:true})
+    const close=()=>setProjectModalOpen({projectCreate:undefined})
+
+    return {
+        projectModalOpen:projectCreate === 'true',
+        open,
+        close
+} as const
+
 }

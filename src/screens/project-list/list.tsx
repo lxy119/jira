@@ -9,6 +9,7 @@ import { User } from './search-panel'
 import {Pin} from "../../components/pin";
 import {useEditProject} from "../../utils/project";
 import {ButtonNoPadding} from "../../components/lib";
+import {useProjectModal} from "../../utils";
 
 export interface Project{
     id:string
@@ -22,12 +23,12 @@ export interface Project{
 interface ListProps extends TableProps<Project>{
     users:User[]
     refresh?:()=>void
-  projectButton:JSX.Element
 }
 
 export const List=({users,...props}:ListProps)=>{
 
     const {mutate}=useEditProject()
+    const {open}=useProjectModal()
     const columns=[{
         title: <Pin checked={true} disabled={true}/>,
         render(project: any){
@@ -62,7 +63,7 @@ export const List=({users,...props}:ListProps)=>{
         render() {
             return <Dropdown overlay={<Menu>
                 <Menu.Item key={'edit'}>
-                    {props.projectButton}
+                    <ButtonNoPadding onClick={open}>编辑</ButtonNoPadding>
                 </Menu.Item>
             </Menu>}>
                 <ButtonNoPadding type={"link"}>...</ButtonNoPadding>

@@ -13,29 +13,28 @@ import {restRoute} from "./utils";
 import {ProjectModal} from './screens/project-list/project-modal'
 import {ProjectPopover} from "./components/projectpopover";
 export const AuthenticatedApp=()=>{
-    const [projectModalOpen,setProjectModalOpen]=useState(false)
-    return <Container>
-        <PageHeader projectButton={<Button onClick={()=>setProjectModalOpen(true)}>創建項目</Button>}/>
+    return <BrowserRouter>
+    <Container>
+        <PageHeader/>
         <Main>
-            <BrowserRouter>
                 <Routes>
-                    <Route path={'/projects'} element={<ProjectListScreen  projectButton={<Button onClick={()=>setProjectModalOpen(true)}>創建項目</Button>} />}/>
+                    <Route path={'/projects'} element={<ProjectListScreen/>}/>
                     <Route path={'/projects/:projectId/*'} element={<ProjectScreen/>}/>
                     <Navigate to={'/projects'}/>
                 </Routes>
-                <ProjectModal onClose={()=>setProjectModalOpen(false)} projectModalOpen={projectModalOpen}/>
-            </BrowserRouter>
+                <ProjectModal/>
         </Main>
     </Container>
+    </BrowserRouter>
 }
-const PageHeader=(props:{projectButton:JSX.Element})=>{
+const PageHeader=()=>{
     const {logout,user}=useAuth()
     return (<Header between={true}>
         <LeftHeader gap={true}>
             <ButtonNoPadding type={'link'} onClick={restRoute} >
                 <Softwarelogo width={'18rem'} color={'rgba(38,132,255)'}/>
             </ButtonNoPadding>
-            <ProjectPopover {...props}/>
+            <ProjectPopover/>
             <span>用户</span>
         </LeftHeader>
         <RightHeader>
