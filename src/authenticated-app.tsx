@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import {Button, Dropdown, Menu} from "antd";
 import {Route,Routes,Navigate} from 'react-router'
-import {BrowserRouter} from "react-router-dom";
 
 import {ProjectListScreen} from "screens/project-list";
 import {useAuth} from "context/auth-context";
@@ -13,8 +12,7 @@ import {restRoute} from "./utils";
 import {ProjectModal} from './screens/project-list/project-modal'
 import {ProjectPopover} from "./components/projectpopover";
 export const AuthenticatedApp=()=>{
-    return <BrowserRouter>
-    <Container>
+    return <Container>
         <PageHeader/>
         <Main>
                 <Routes>
@@ -25,7 +23,6 @@ export const AuthenticatedApp=()=>{
                 <ProjectModal/>
         </Main>
     </Container>
-    </BrowserRouter>
 }
 const PageHeader=()=>{
     const {logout,user}=useAuth()

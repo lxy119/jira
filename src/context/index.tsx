@@ -1,8 +1,23 @@
-import {ReactNode} from "react";
-import {AuthProvider} from "./auth-context";
+import React, {ReactNode} from "react";
+import {BrowserRouter} from "react-router-dom";
 import {QueryClient,QueryClientProvider} from 'react-query'
-export const AppProviders=({children}:{children:ReactNode})=>{
-return <QueryClientProvider client={new QueryClient()}>
-    <AuthProvider children={children}/>
-</QueryClientProvider>
-}
+
+import {AuthProvider} from "./auth-context";
+
+export const AppProviders = ({ children }: { children: ReactNode }) => {
+    const queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                refetchOnWindowFocus: false,
+            },
+        },
+    });
+
+    return (
+        <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+                <AuthProvider>{children}</AuthProvider>
+            </BrowserRouter>
+        </QueryClientProvider>
+    );
+};

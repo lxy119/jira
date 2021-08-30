@@ -3,7 +3,7 @@ import { Divider, List, Popover, Typography} from "antd";
 import {useProject} from "../utils/project";
 import styled from "@emotion/styled";
 import {ButtonNoPadding} from "./lib";
-import {useProjectModal} from "../utils";
+import {useProjectModal} from "../screens/project-list/util";
 // import {ButtonNoPadding} from "./lib";
 
 

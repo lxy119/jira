@@ -3,8 +3,8 @@ import {Select} from "antd";
 
 
 interface SelectProps extends Omit<React.ComponentProps<typeof Select>,'value'|'onChange'|'options'>{
-    value:number|string|null|undefined
-    onChange:(value?:number)=>void
+    value?:number|string|null|undefined
+    onChange?:(value?:number)=>void
     defaultOptionName?:string
     options?:{name:string,id:number}[]
 }
@@ -15,7 +15,7 @@ export const IdSelect=(props:SelectProps)=>{
 
     return <Select
     value={options?.length?toNumber(value):0}
-    onChange={(value)=>onChange(toNumber(value)||undefined)}
+    onChange={(value)=>onChange?.(toNumber(value)||undefined)}
     {...restProps}
     >
         {

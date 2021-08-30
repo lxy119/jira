@@ -1,5 +1,4 @@
 import {useEffect, useRef, useState} from "react"
-import {useUrlQueryParam} from "./url";
 // export const isFalsy=(value:unknown)=>value===0?false:!value
 
 export const isVoid=(value:unknown)=>value===undefined||value===null||value===''
@@ -67,15 +66,22 @@ export const useMountedRef = ()=>{
     return mountedRef
 }
 
-export  const useProjectModal=()=>{
-    const [{projectCreate},setProjectModalOpen]=useUrlQueryParam(['projectCreate'])
-    const open=()=>setProjectModalOpen({projectCreate:true})
-    const close=()=>setProjectModalOpen({projectCreate:undefined})
 
-    return {
-        projectModalOpen:projectCreate === 'true',
-        open,
-        close
-} as const
 
-}
+/**
+ * 传入一个对象，和键集合，返回对应的对象中的键值对
+ * @param obj
+ * @param keys
+ */
+export const subset = <
+    O extends { [key in string]: unknown },
+    K extends keyof O
+    >(
+    obj: O,
+    keys: K[]
+) => {
+    const filteredEntries = Object.entries(obj).filter(([key]) =>
+        keys.includes(key as K)
+    );
+    return Object.fromEntries(filteredEntries) as Pick<O, K>;
+};

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Card, Divider, Typography} from "antd";
+import {Button, Card, Divider} from "antd";
 import styled from '@emotion/styled'
 // import {Helmet} from 'react-helmet' 引入库设置title
 
@@ -10,6 +10,7 @@ import left from 'assets/left.svg'
 import right from 'assets/right.svg'
 import logo from 'assets/logo.svg'
 import {useDocumentTitle} from "utils";
+import {ErrorBox} from "../components/lib";
 
 export const  UnauthenticatedApp=()=>{
     const [isRegister,setIsRegister]=useState(false)
@@ -24,7 +25,7 @@ export const  UnauthenticatedApp=()=>{
         <Background/>
             <ShadowCard>
                 <Title>{isRegister?'请注册':'请登录'}</Title>
-                {error?<Typography.Text type={'danger'}>{error.message}</Typography.Text>:null}
+                <ErrorBox error={error}/>
                 {isRegister?<Register onError={setError}/>:<Login onError={setError}/>}
                 <Divider/>
                 <Button type={"link"} onClick={()=>setIsRegister(!isRegister)}>切换到{isRegister?'已经有账号了？直接登录':'没有账号？注册新账号'}</Button>
