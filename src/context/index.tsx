@@ -13,11 +13,9 @@ export const AppProviders = ({ children }: { children: ReactNode }) => {
         },
     });
 
-    return (
-        <QueryClientProvider client={queryClient}>
+    return (<QueryClientProvider client={queryClient}>
             <BrowserRouter>
                 <AuthProvider>{children}</AuthProvider>
             </BrowserRouter>
-        </QueryClientProvider>
-    );
+        </QueryClientProvider>)
 };

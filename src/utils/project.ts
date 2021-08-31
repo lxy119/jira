@@ -1,16 +1,18 @@
 // import {useCallback, useEffect} from "react";
 // import {cleanObject} from "./index";
 // import {useAsync} from "./use-async";
-import {Project} from "../screens/project-list/list";
-import {useHttp} from "./http";
 import {QueryKey, useMutation, useQuery} from "react-query";
+
+import {useHttp} from "./http";
 import {useAddConfig, useDeleteConfig, useEditConfig} from "./use-optimistic-options";
+import {cleanObject} from "./index";
+import {Project} from "../types/project";
 
 
-export  const useProject=(param?:Partial<Project>)=>{
+export  const useProjects= (param?: Partial<Project>)=>{
     const client=useHttp()
 
-    return useQuery<Project[]>(['projects',param],()=>client('projects',{data:param}))
+    return useQuery<Project[]>(['projects',cleanObject(param)],()=>client('projects',{data:param}))
 }
 
 export const useEditProject=(queryKey:QueryKey)=>{
@@ -49,7 +51,7 @@ export const useAddProject=(queryKey:QueryKey)=>{
 
 export const useProjectId=(id?:number)=>{
     const  client=useHttp()
-    return useQuery<Project>(['project',{id}],()=>client(`projects/${id}`),{enabled:!!id})
+    return useQuery<Project>(['project',{id}],()=>client(`projects/${id}`),{enabled:Boolean(id)})
 }
 
 export const useDeleteProject = (queryKey: QueryKey) => {

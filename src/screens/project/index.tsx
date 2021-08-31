@@ -6,14 +6,13 @@ import {Spectaculars} from "../spectaculars";
 
 
 export const ProjectScreen=()=>{
-    console.log(window.location)
     return <div>
         <Link to={'spectaculars'}>看板</Link>
         <Link to={'taskGroup'}>任务组</Link>
         <Routes>
             <Route path={'/spectaculars'} element={<Spectaculars/>}/>
             <Route path={'/taskGroup'} element={<TaskGroup/>}/>
-        <Navigate to={window.location.pathname+'/spectaculars'}/>
+        <Navigate to={window.location.pathname+'/spectaculars'} replace={true}/>
         </Routes>
     </div>
 }

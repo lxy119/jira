@@ -1228,7 +1228,7 @@
     source-map "^0.5.7"
     stylis "^4.0.3"
 
-"@emotion/cache@^11.4.0":
+"@emotion/cache@^11.1.3":
   version "11.4.0"
   resolved "https://registry.nlark.com/@emotion/cache/download/@emotion/cache-11.4.0.tgz#293fc9d9a7a38b9aad8e9337e5014366c3b09ac0"
   integrity sha1-KT/J2aeji5qtjpM35QFDZsOwmsA=
@@ -1256,20 +1256,20 @@
   resolved "https://registry.nlark.com/@emotion/memoize/download/@emotion/memoize-0.7.5.tgz#2c40f81449a4e554e9fc6396910ed4843ec2be50"
   integrity sha1-LED4FEmk5VTp/GOWkQ7UhD7CvlA=
 
-"@emotion/react@^11.4.1":
-  version "11.4.1"
-  resolved "https://registry.nlark.com/@emotion/react/download/@emotion/react-11.4.1.tgz?cache=0&sync_timestamp=1628415927463&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40emotion%2Freact%2Fdownload%2F%40emotion%2Freact-11.4.1.tgz#a1b0b767b5bad57515ffb0cad9349614d27f4d57"
-  integrity sha1-obC3Z7W61XUV/7DK2TSWFNJ/TVc=
+"@emotion/react@11.1.4":
+  version "11.1.4"
+  resolved "https://registry.nlark.com/@emotion/react/download/@emotion/react-11.1.4.tgz#ddee4247627ff7dd7d0c6ae52f1cfd6b420357d2"
+  integrity sha1-3e5CR2J/9919DGrlLxz9a0IDV9I=
   dependencies:
-    "@babel/runtime" "^7.13.10"
-    "@emotion/cache" "^11.4.0"
-    "@emotion/serialize" "^1.0.2"
-    "@emotion/sheet" "^1.0.2"
+    "@babel/runtime" "^7.7.2"
+    "@emotion/cache" "^11.1.3"
+    "@emotion/serialize" "^1.0.0"
+    "@emotion/sheet" "^1.0.1"
     "@emotion/utils" "^1.0.0"
     "@emotion/weak-memoize" "^0.2.5"
     hoist-non-react-statics "^3.3.1"
 
-"@emotion/serialize@^1.0.2":
+"@emotion/serialize@^1.0.0", "@emotion/serialize@^1.0.2":
   version "1.0.2"
   resolved "https://registry.nlark.com/@emotion/serialize/download/@emotion/serialize-1.0.2.tgz#77cb21a0571c9f68eb66087754a65fa97bfcd965"
   integrity sha1-d8shoFccn2jrZgh3VKZfqXv82WU=
@@ -1280,7 +1280,7 @@
     "@emotion/utils" "^1.0.0"
     csstype "^3.0.2"
 
-"@emotion/sheet@^1.0.0", "@emotion/sheet@^1.0.2":
+"@emotion/sheet@^1.0.0", "@emotion/sheet@^1.0.1":
   version "1.0.2"
   resolved "https://registry.nlark.com/@emotion/sheet/download/@emotion/sheet-1.0.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40emotion%2Fsheet%2Fdownload%2F%40emotion%2Fsheet-1.0.2.tgz#1d9ffde531714ba28e62dac6a996a8b1089719d0"
   integrity sha1-HZ/95TFxS6KOYtrGqZaosQiXGdA=
@@ -10408,21 +10408,21 @@ react-query-devtools@^2.6.3:
   dependencies:
     match-sorter "^4.1.0"
 
+react-query@3.16.1:
+  version "3.16.1"
+  resolved "https://registry.nlark.com/react-query/download/react-query-3.16.1.tgz#0bb9c5c45a74e14b5e204218fa602fe1a1065976"
+  integrity sha1-C7nFxFp04UteIEIY+mAv4aEGWXY=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    broadcast-channel "^3.4.1"
+    match-sorter "^6.0.2"
+
 react-query@^2.26.3:
   version "2.26.4"
   resolved "https://registry.nlark.com/react-query/download/react-query-2.26.4.tgz#18239b4c0b61d0b744f0d4a91f566b294fa9f752"
   integrity sha1-GCObTAth0LdE8NSpH1ZrKU+p91I=
   dependencies:
     "@babel/runtime" "^7.5.5"
-
-react-query@^3.21.0:
-  version "3.21.0"
-  resolved "https://registry.nlark.com/react-query/download/react-query-3.21.0.tgz#2e099a7906c38eeeb750e8b9b12121a21fa8d9ef"
-  integrity sha1-LgmaeQbDju63UOi5sSEhoh+o2e8=
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    broadcast-channel "^3.4.1"
-    match-sorter "^6.0.2"
 
 react-query@^3.5.10:
   version "3.20.0"

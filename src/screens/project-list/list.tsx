@@ -5,20 +5,12 @@ import {Dropdown, Menu, Modal, Table, TableProps} from "antd";
 import dayjs from "dayjs";
 
 
-import { User } from './search-panel'
 import {Pin} from "../../components/pin";
 import {useDeleteProject, useEditProject} from "../../utils/project";
 import {ButtonNoPadding} from "../../components/lib";
 import {useProjectModal, useProjectsQueryKey} from "./util";
-
-export interface Project{
-    id:string
-    name:string
-    personId:number
-    pin:boolean
-    organization:string
-    created:number
-}
+import {Project} from "../../types/project";
+import {User} from "../../types/user";
 
 interface ListProps extends TableProps<Project>{
     users:User[]
@@ -29,6 +21,7 @@ export const List=({users,...props}:ListProps)=>{
     const {mutate}=useEditProject(useProjectsQueryKey())
     const columns=[{
         title: <Pin checked={true} disabled={true}/>,
+        key:'pin',
         render(project: Project){
             return <Pin checked={project.pin}
                         onCheckedChange={(pin) => mutate({id: project.id,pin})}/>
@@ -36,6 +29,7 @@ export const List=({users,...props}:ListProps)=>{
     },
     {
         title:'名称',
+        key:'name',
         sorter:(a:any,b:any)=>a.name.localeCompare(b.name),
         render(project: any) {
             return <Link to={String(project.id)}>{project.name}</Link>
@@ -45,6 +39,7 @@ export const List=({users,...props}:ListProps)=>{
         dataIndex: 'organization',
     },{
         title:'负责人',
+            key:'person',
         render(project:Project){
             return <span>
                 {users.find((user:User)=>project.personId===user.id)?.name||'未知'}
@@ -52,12 +47,14 @@ export const List=({users,...props}:ListProps)=>{
         }
     },{
         title: '创建时间',
+            key: 'time',
         render(project:Project){
             return <span>
                 {project.created? dayjs(project.created).format('YYYY-MM-DD'):'无'}
             </span>
         }
     },{
+        key: 'edit',
         render(project:Project) {
             return <More project={project} />;
         }

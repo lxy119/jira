@@ -1,9 +1,9 @@
-import {useEffect, useRef, useState} from "react"
+import {useCallback, useEffect, useRef, useState} from "react"
 // export const isFalsy=(value:unknown)=>value===0?false:!value
 
 export const isVoid=(value:unknown)=>value===undefined||value===null||value===''
 //在一个函数里改变传入的对象本身是不好的
-export const cleanObject=(object: { [key:string]:unknown })=>{
+export const cleanObject=(object?: { [key:string]:unknown })=>{
     //Object.assign({},object)
     const result={...object}
     Object.keys(result).forEach(
@@ -18,10 +18,10 @@ export const cleanObject=(object: { [key:string]:unknown })=>{
  // eslint-disable-next-line
 export const useMount=(callback:()=>void)=>{
 useEffect(() => {
-   // TODO 依赖项里面加上callback会造成无限循环，这个和useCallback以及useMemo有关系
+   //  依赖项里面加上callback会造成无限循环，这个和useCallback以及useMemo有关系
    callback()
 //    eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
+},[useCallback])
 }
 export const useDebounce=<V>(value:V,delay?:number)=>{
     const [debounceValue,setDebounceValue]=useState(value)

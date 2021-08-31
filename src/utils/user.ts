@@ -1,7 +1,7 @@
 import {cleanObject, useMount} from "./index";
 import {useAsync} from "./use-async";
 import {useHttp} from "./http";
-import {User} from "../screens/project-list/search-panel";
+import {User} from "../types/user";
 
 
 export  const useUsers=(param?:Partial<User>)=>{
