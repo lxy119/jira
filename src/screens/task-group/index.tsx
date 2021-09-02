@@ -59,14 +59,10 @@ export const TaskGroup = () => {
               }
             />
             <div>
-              {tasks
-                ?.filter((task) => task.epicId === epic.id).map((task) => (
+              {tasks?.filter((task) => task.epicId === epic.id).map((task) => (
                   <Link
-                    to={`/projects/${currentProject?.id}/kanban?editingTaskId=${task.id}`}
-                    key={task.id}
-                  >
-                    {task.name}
-                  </Link>
+                    to={`/projects/${currentProject?.id}/spectaculars?editingTaskId=${task.id}`}
+                    key={task.id}>{task.name}</Link>
                 ))}
             </div>
           </List.Item>
