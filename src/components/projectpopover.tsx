@@ -8,13 +8,14 @@ import {useProjectModal} from "../screens/project-list/util";
 
 
 export const ProjectPopover=()=>{
-    const {data:projects}=useProjects()
+    const {data:projects,refetch}=useProjects()
     const {open}=useProjectModal()
+    const pinnedProjects = projects?.filter((project) => project.pin);
 
     const content=<ContentContainer>
         <Typography.Text type={"secondary"}>收藏項目</Typography.Text>
         <List>
-            {projects?.map(project=><List.Item key={project.id}>
+            {pinnedProjects?.map(project=><List.Item key={project.id}>
                 <List.Item.Meta title={project.name} />
             </List.Item>)}
             <Divider/>
@@ -23,7 +24,7 @@ export const ProjectPopover=()=>{
             </ButtonNoPadding>
         </List>
     </ContentContainer>
-    return <Popover content={content} placement={"bottom"}>
+    return <Popover onVisibleChange={()=>refetch()} content={content} placement={"bottom"}>
         <span>項目</span>
     </Popover>
 }

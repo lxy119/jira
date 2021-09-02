@@ -11,6 +11,7 @@ import {ProjectScreen} from "./screens/project";
 import {restRoute} from "./utils";
 import {ProjectModal} from './screens/project-list/project-modal'
 import {ProjectPopover} from "./components/projectpopover";
+import { UserPopover } from "components/user-popover";
 export const AuthenticatedApp=()=>{
     return <Container>
         <PageHeader/>
@@ -32,7 +33,7 @@ const PageHeader=()=>{
                 <Softwarelogo width={'18rem'} color={'rgba(38,132,255)'}/>
             </ButtonNoPadding>
             <ProjectPopover/>
-            <span>用户</span>
+            <UserPopover/>
         </LeftHeader>
         <RightHeader>
             <Dropdown overlay={<Menu><Menu.Item key={'logout'}>
@@ -58,5 +59,8 @@ z-index: 1;
 const LeftHeader=styled(Row)``
 const RightHeader=styled.div``
 
-const Main = styled.main``
+const Main = styled.main`
+display: flex;
+overflow: hidden;
+`
 
