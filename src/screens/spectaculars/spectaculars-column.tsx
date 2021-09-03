@@ -37,9 +37,9 @@ HTMLDivElement,
       <Drop
           type={"ROW"}
           direction={"vertical"}
-          droppableId={String(spectaculars.id)}
-        >
-          <DropChild style={{ minHeight: "1rem" }}>
+          droppableId={String(spectaculars.id)
+          }>
+          <DropChild style={{ minHeight: "1rem" }} >
             {tasks?.map((task, taskIndex) => (
               <Drag
                 key={task.id}

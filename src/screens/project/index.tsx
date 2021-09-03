@@ -22,8 +22,8 @@ export const ProjectScreen=()=>{
     return <Container>
         <Aside>
           <Menu mode={'inline'} selectedKeys={[routeType]}>
-            <Menu.Item key={"spectaculars"}>
-        <Link to={'spectaculars'} >看板</Link>
+            <Menu.Item key={"kanbans"}>
+        <Link to={'kanbans'} >看板</Link>
             </Menu.Item>
             <Menu.Item key={"epic"}>
         <Link to={'epic'}>任务组</Link>
@@ -32,9 +32,9 @@ export const ProjectScreen=()=>{
         </Aside>
        <Main>
        <Routes>
-            <Route path={'/spectaculars'} element={<Spectaculars/>}/>
+            <Route path={'/kanbans'} element={<Spectaculars/>}/>
             <Route path={'/epic'} element={<TaskGroup/>}/>
-        <Navigate to={window.location.pathname+'/spectaculars'} replace={true}/>
+        <Navigate to={window.location.pathname+'/kanbans'} replace={true}/>
         </Routes>
        </Main>
     </Container>

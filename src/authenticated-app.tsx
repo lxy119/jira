@@ -12,7 +12,7 @@ import {restRoute} from "./utils";
 import {ProjectModal} from './screens/project-list/project-modal'
 import {ProjectPopover} from "./components/projectpopover";
 import { UserPopover } from "components/user-popover";
-export const AuthenticatedApp=()=>{
+export default ()=>{
     return <Container>
         <PageHeader/>
         <Main>

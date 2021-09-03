@@ -3,18 +3,20 @@ import React from 'react';
 // import { ProjectListScreen } from './screens/project-list';
 // import {Login} from './screens/login'
 import {useAuth} from "./context/auth-context";
-import {AuthenticatedApp} from "./authenticated-app";
-import {UnauthenticatedApp} from "./unauthenticated-app";
 import {ErrorBundary} from "./components/error-bundary";
-import {FullPageErrorFallback} from "./components/lib";
+import {FullPageErrorFallback,FullPageLoading} from "./components/lib";
 
 function App() {
   const {user}=useAuth()
+  const AuthenticatedApp=React.lazy(()=>import('authenticated-app'))
+  const UnauthenticatedApp=React.lazy(()=>import('unauthenticated-app'))
+
   return (
     <div className="App">
      {/* <ProjectListScreen/> */}
      {/*<Login/>*/}
      <ErrorBundary fallbackRender={FullPageErrorFallback}>
+       <React.Suspense fallback={<FullPageLoading/>}/>
        {user?<AuthenticatedApp/>:<UnauthenticatedApp/>}
      </ErrorBundary>
     </div>

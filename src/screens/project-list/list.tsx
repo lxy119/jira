@@ -32,7 +32,7 @@ export const List=({users,...props}:ListProps)=>{
         key:'name',
         sorter:(a:any,b:any)=>a.name.localeCompare(b.name),
         render(project: any) {
-            return <Link to={String(project.id)}>{project.name}</Link>
+            return <Link to={String(project.id)} key={project.id}>{project.name}</Link>
         }
     },{
         title: '部门',
@@ -41,7 +41,7 @@ export const List=({users,...props}:ListProps)=>{
         title:'负责人',
             key:'person',
         render(project:Project){
-            return <span>
+            return <span key={project.id}>
                 {users.find((user:User)=>project.personId===user.id)?.name||'未知'}
             </span>
         }
@@ -49,14 +49,14 @@ export const List=({users,...props}:ListProps)=>{
         title: '创建时间',
             key: 'time',
         render(project:Project){
-            return <span>
+            return <span key={project.id}>
                 {project.created? dayjs(project.created).format('YYYY-MM-DD'):'无'}
             </span>
         }
     },{
         key: 'edit',
         render(project:Project) {
-            return <More project={project} />;
+            return <More project={project} key={project.id}/>;
         }
         }
     ]

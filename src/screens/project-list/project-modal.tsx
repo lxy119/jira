@@ -38,7 +38,7 @@ export const ProjectModal=()=>{
                         <Form form={form} layout={"vertical"} style={{ width: "40rem" }} onFinish={onFinish}>
                             <Form.Item
                                 label={"名称"}
-                                name={"name"}
+                                name={"dsadasdasd"}
                                 rules={[{ required: true, message: "请输入项目名" }]}
                             >
                                 <Input placeholder={"请输入项目名称"} />
