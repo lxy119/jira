@@ -9,7 +9,7 @@ import styled from "@emotion/styled";
 import {useProjects} from "../../utils/project";
 import {useUsers} from "../../utils/user";
 import {useProjectModal, useProjectSearchParams} from './util';
-import {ButtonNoPadding, ErrorBox, Row} from "../../components/lib";
+import {ButtonNoPadding, ErrorBox, Row, ScreenContainer} from "../../components/lib";
 // import {Helmet} from "react-helmet";
 
 // const baseUrl=process.env.REACT_APP_API_URL
@@ -24,7 +24,7 @@ export const ProjectListScreen=()=>{
     const {open}=useProjectModal()
 
     useDocumentTitle('项目管理列表',false)
-    return <Container >
+    return <ScreenContainer >
 
         {/*<Helmet>*/}
         {/*    <title>项目列表</title>*/}
@@ -36,7 +36,7 @@ export const ProjectListScreen=()=>{
     <SearchPanel param={param} users={users||[]} setParam={setParam}/>
     <ErrorBox error={error}/>
     <List  dataSource={list||[]} users={users||[]} loading={isLoading} />
-    </Container>
+    </ScreenContainer>
 }
 
 ProjectListScreen.whyDidyouRender=false
@@ -45,6 +45,5 @@ ProjectListScreen.whyDidyouRender=false
 //     static whyDidYouRender=true
 // }
 const Container=styled.div`
-width: 100%;
 padding: 3.2rem;
 `

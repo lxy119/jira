@@ -16,8 +16,9 @@ function App() {
      {/* <ProjectListScreen/> */}
      {/*<Login/>*/}
      <ErrorBundary fallbackRender={FullPageErrorFallback}>
-       <React.Suspense fallback={<FullPageLoading/>}/>
-       {user?<AuthenticatedApp/>:<UnauthenticatedApp/>}
+       <React.Suspense fallback={<FullPageLoading/>}>
+           {user?<AuthenticatedApp/>:<UnauthenticatedApp/>}
+       </React.Suspense>
      </ErrorBundary>
     </div>
   );

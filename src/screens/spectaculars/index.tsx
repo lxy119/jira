@@ -12,7 +12,6 @@ import { CreateKanban } from "./create-spectaculars";
 import { TaskModal } from "./task-modal";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { Drag, Drop, DropChild } from "components/drag-and-drop";
-import { Profiler } from "components/profiler";
 
 export const Spectaculars=()=>{
     // 设置标题
@@ -25,8 +24,7 @@ export const Spectaculars=()=>{
     const isLoading = taskIsLoading||spectacularsIsLoading
     const onDragEnd = useDragEnd();
 
-    return <Profiler id={'看板页面'}>
-        <DragDropContext onDragEnd={onDragEnd}>
+    return <DragDropContext onDragEnd={onDragEnd}>
       <ScreenContainer>
           <h1>{currentProject?.name}看板</h1>
           <SearchPanel />
@@ -57,7 +55,6 @@ export const Spectaculars=()=>{
           <TaskModal />
         </ScreenContainer>
     </DragDropContext>
-    </Profiler>
     }
 
 export const useDragEnd = () => {

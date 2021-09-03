@@ -21,7 +21,6 @@ export const List=({users,...props}:ListProps)=>{
     const {mutate}=useEditProject(useProjectsQueryKey())
     const columns=[{
         title: <Pin checked={true} disabled={true}/>,
-        key:'pin',
         render(project: Project){
             return <Pin checked={project.pin}
                         onCheckedChange={(pin) => mutate({id: project.id,pin})}/>
@@ -29,9 +28,8 @@ export const List=({users,...props}:ListProps)=>{
     },
     {
         title:'名称',
-        key:'name',
-        sorter:(a:any,b:any)=>a.name.localeCompare(b.name),
-        render(project: any) {
+        sorter:(a:Project,b:Project)=>a.name.localeCompare(b.name),
+        render(project: Project) {
             return <Link to={String(project.id)} key={project.id}>{project.name}</Link>
         }
     },{
@@ -39,24 +37,21 @@ export const List=({users,...props}:ListProps)=>{
         dataIndex: 'organization',
     },{
         title:'负责人',
-            key:'person',
         render(project:Project){
-            return <span key={project.id}>
+            return <span>
                 {users.find((user:User)=>project.personId===user.id)?.name||'未知'}
             </span>
         }
     },{
         title: '创建时间',
-            key: 'time',
         render(project:Project){
             return <span key={project.id}>
                 {project.created? dayjs(project.created).format('YYYY-MM-DD'):'无'}
             </span>
         }
     },{
-        key: 'edit',
         render(project:Project) {
-            return <More project={project} key={project.id}/>;
+            return <More project={project}/>;
         }
         }
     ]
