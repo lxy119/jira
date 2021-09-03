@@ -12,7 +12,7 @@ import logo from 'assets/logo.svg'
 import {useDocumentTitle} from "utils";
 import {ErrorBox} from "../components/lib";
 
-export default  ()=>{
+export const UnauthenticatedApp=()=>{
     const [isRegister,setIsRegister]=useState(false)
     const [error,setError]=useState<null|Error>(null)
     useDocumentTitle('登录或注册界面')
