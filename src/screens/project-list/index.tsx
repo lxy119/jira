@@ -5,7 +5,6 @@ import { SearchPanel } from "./search-panel"
 import {List} from "./list"
 import {useDebounce, useDocumentTitle} from '../../utils'
 // import * as qs from 'qs'
-import styled from "@emotion/styled";
 import {useProjects} from "../../utils/project";
 import {useUsers} from "../../utils/user";
 import {useProjectModal, useProjectSearchParams} from './util';
@@ -44,6 +43,4 @@ ProjectListScreen.whyDidyouRender=false
 // class Test extends React.Component<any, any>{
 //     static whyDidYouRender=true
 // }
-const Container=styled.div`
-padding: 3.2rem;
-`
+
