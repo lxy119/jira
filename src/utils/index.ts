@@ -5,6 +5,9 @@ export const isVoid=(value:unknown)=>value===undefined||value===null||value===''
 //在一个函数里改变传入的对象本身是不好的
 export const cleanObject=(object?: { [key:string]:unknown })=>{
     //Object.assign({},object)
+    if(!object){
+        return {}
+    }
     const result={...object}
     Object.keys(result).forEach(
         key=>{
