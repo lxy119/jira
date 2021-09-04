@@ -1,4 +1,4 @@
-本次项目前端用到的技术栈是React17+React Hook+TS4，而后端采用的是一个第三方工具来进行mock
+本次任务管理项目前端用到的技术栈是React17+React Hook+TS4，而后端采用的是一个第三方工具jira-dev-tool来进行mock
 
 
 
